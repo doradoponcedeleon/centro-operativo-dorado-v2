@@ -33,6 +33,7 @@
     <div class="row syncrow">
       <button id="btn-sync" class="primary">Sincronizar ahora</button>
       <span id="sync-status" class="small">Sincronización: —</span>
+      <span id="clock" class="small">Fecha/Hora: —</span>
     </div>
   </header>
 
@@ -180,6 +181,16 @@
         }
       });
     }
+
+    const clockEl = document.getElementById("clock");
+    function updateClock() {
+      const now = new Date();
+      const date = now.toLocaleDateString("es-BO");
+      const time = now.toLocaleTimeString("es-BO");
+      if (clockEl) clockEl.textContent = `Fecha/Hora: ${date} ${time}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
   </script>
 </body>
 </html>
