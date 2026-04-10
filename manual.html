@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manual — Centro Operativo Dorado</title>
+  <style>
+    :root{--bg:#0c1014;--card:#141c24;--card2:#0f172a;--txt:#f1ede6;--mut:#cfc4b3;--edge:#2a2f3a;--gold:#f0d7a4}
+    body{margin:0;font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;background:linear-gradient(180deg,#0b0f14,#0c1014);color:var(--txt);font-size:18px}
+    header{padding:16px;border-bottom:2px solid var(--edge);background:linear-gradient(180deg,rgba(18,24,32,0.95),rgba(15,23,42,0.92))}
+    h1{margin:0;font-size:24px}
+    h2{margin:18px 0 8px}
+    .wrap{max-width:1000px;margin:0 auto;padding:16px}
+    .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--edge);border-radius:14px;padding:14px;margin:12px 0;box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+    .muted{color:var(--mut)}
+    .badge{display:inline-block;border:1px solid #3a2e20;border-radius:999px;padding:4px 10px;font-size:13px;color:var(--mut)}
+    .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    a{color:var(--gold)}
+    ul{margin:6px 0 0 18px}
+    .label{font-weight:700}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Manual de Uso — Centro Operativo Dorado</h1>
+    <div class="muted">Guía completa de botones, menús y letreros.</div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>1) Qué es</h2>
+      <p>Centro Operativo Dorado es tu panel central para <b>proyectos</b>, <b>bitácora</b> y <b>módulos</b> especializados. Está diseñado para uso diario en escritorio o móvil.</p>
+    </section>
+
+    <section class="card">
+      <h2>2) Barra Superior (Header)</h2>
+      <div class="grid">
+        <div>
+          <div class="label">Nombre / Marca</div>
+          <div class="muted">Identifica el panel principal.</div>
+        </div>
+        <div>
+          <div class="label">Menú principal</div>
+      <div class="muted">Incluye acceso directo a <b>Manual</b>.</div>
+          <ul>
+            <li><b>Dashboard</b>: resumen general.</li>
+            <li><b>Proyectos</b>: gestión completa de proyectos.</li>
+            <li><b>Bitácora</b>: notas rápidas y avances.</li>
+            <li><b>Módulos</b>: acceso a sub‑aplicaciones.</li>
+            <li><b>Import/Export</b>: descargas y cargas de datos.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="label">Sincronizar ahora</div>
+          <div class="muted">Forza la sincronización en la nube.</div>
+        </div>
+        <div>
+          <div class="label">Estado de sincronización</div>
+          <div class="muted">Letrero que indica “enviando / leyendo / OK / error”.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) Dashboard</h2>
+      <p><span class="badge">Resumen</span> muestra métricas rápidas:</p>
+      <ul>
+        <li>Total de proyectos</li>
+        <li>Activos</li>
+        <li>Pausados</li>
+        <li>Completos</li>
+      </ul>
+      <p><span class="badge">Próximos pasos</span> lista tareas clave de los proyectos.</p>
+    </section>
+
+    <section class="card">
+      <h2>4) Proyectos</h2>
+      <p><b>Ruta local (Termux)</b>: campo para guardar la carpeta o archivo local asociado al proyecto.</p>
+      <p><b>URL del proyecto</b>: enlace externo (GitHub, Google Drive, página pública, etc.).</p>
+      <ul>
+        <li><b>+ Nuevo</b>: crea un proyecto.</li>
+        <li><b>Buscar</b>: filtra por nombre, etiquetas o estado.</li>
+        <li><b>Filtro de estado</b>: activo, pausado o completo.</li>
+        <li><b>Editar</b>: actualiza un proyecto.</li>
+        <li><b>Eliminar</b>: borra un proyecto.</li>
+      </ul>
+      <p>Campos principales:</p>
+      <ul>
+        <li><b>Nombre</b></li>
+        <li><b>Estado</b></li>
+        <li><b>Etiquetas</b></li>
+        <li><b>Próximo paso</b></li>
+        <li><b>Notas</b></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>5) Bitácora</h2>
+      <ul>
+        <li><b>Campo de texto</b>: escribe avances o decisiones.</li>
+        <li><b>Agregar</b>: guarda el registro con fecha y hora.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>6) Módulos</h2>
+      <p>Ahora puedes guardar una ruta local y un <b>vínculo URL</b> por cada módulo en el panel de Módulos.</p>
+      <p>Accesos directos a áreas especializadas:</p>
+      <ul>
+        <li>Kits Física</li>
+        <li>Maker Lab</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>7) Import/Export</h2>
+      <ul>
+        <li><b>Descargar proyectos+bitácora</b>: exporta datos básicos.</li>
+
+    <section class="card">
+        <li><b>Sincronizar ahora</b>: sube/baja ideas.</li>
+        <li><b>Buscar</b>: filtra por texto o etiquetas.</li>
+        <li><b>Cajones</b>: Captura, Prototipo, Validación, Archivo.</li>
+        <li><b>Dictar</b>: usa micrófono (si el navegador lo permite).</li>
+        <li><b>Plantillas</b>: estructura rápida de ideas.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>9) Sincronización (sin login)</h2>
+      <p>Datos se guardan en Supabase sin login. Si falla, el letrero indica el error.</p>
+      <p class="muted">Nota: si no hay internet, seguirá guardando localmente.</p>
+    </section>
+
+    <section class="card">
+      <h2>10) Soporte rápido</h2>
+      <ul>
+        <li>Si algo no aparece: refresca la página.</li>
+        <li>Si no sincroniza: revisa el letrero de estado.</li>
+        <li>Si un dispositivo no ve cambios: presiona “Sincronizar ahora”.</li>
+      </ul>
+    </section>
+
+
+    <section class="card">
+      <h2>11) Guía paso a paso</h2>
+      <div class="grid">
+        <div>
+          <div class="label">Crear un proyecto</div>
+          <ul>
+            <li>Ve a <b>Proyectos</b>.</li>
+            <li>Presiona <b>+ Nuevo</b>.</li>
+            <li>Completa nombre, estado, etiquetas y próximo paso.</li>
+            <li>Guarda. El proyecto aparece en la lista y el Dashboard.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="label">Editar / Eliminar</div>
+          <ul>
+            <li>En la tarjeta del proyecto, presiona <b>Editar</b>.</li>
+            <li>Modifica los campos y guarda.</li>
+            <li>Para borrar, usa <b>Eliminar</b>.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="label">Registrar en Bitácora</div>
+          <ul>
+            <li>Ve a <b>Bitácora</b>.</li>
+            <li>Escribe un avance breve.</li>
+            <li>Presiona <b>Agregar</b>.</li>
+          </ul>
+        </div>
+        <div>
+            <li>Asigna <b>Cajón</b> y <b>Etiquetas</b>.</li>
+            <li>Guarda y busca con filtros.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>12) Flujos reales</h2>
+      <div class="grid">
+        <div>
+          <div class="label">Inicio diario (5 minutos)</div>
+          <ul>
+            <li>Abre <b>Dashboard</b>.</li>
+            <li>Revisa “Próximos pasos”.</li>
+            <li>Si falta algo, edita en <b>Proyectos</b>.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="label">Cierre del día</div>
+          <ul>
+            <li>Registra avances en <b>Bitácora</b>.</li>
+            <li>Marca proyectos como <b>completos</b> o <b>pausados</b>.</li>
+            <li>Presiona <b>Sincronizar ahora</b>.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="label">Lluvia de ideas</div>
+          <ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>13) Resolución de problemas</h2>
+      <ul>
+        <li><b>No aparece el botón Sincronizar</b>: refresca la página o limpia caché.</li>
+        <li><b>Se queda en “enviando”</b>: revisa conexión a internet.</li>
+        <li><b>Error al leer/enviar</b>: verifica Supabase y la tabla <b>cod_data</b>.</li>
+        <li><b>Dictado no funciona</b>: el navegador debe dar permiso al micrófono.</li>
+        <li><b>Datos no aparecen en otro dispositivo</b>: presiona “Sincronizar ahora” en ambos.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>14) Cargar desde ruta local (opcional)</h2>
+      <ul>
+        <li>Esta opción requiere ejecutar un servidor local.</li>
+        <li>En Termux, corre: <b>python3 local_bridge.py</b></li>
+        <li>Luego, en Import/Export pega la ruta del JSON y presiona <b>Cargar ruta</b>.</li>
+      </ul>
+    </section>
+
+
+    <section class="card">
+      <h2>15) Agregar nuevos módulos</h2>
+      <ul>
+        <li>Ve a <b>Módulos</b>.</li>
+        <li>Escribe el <b>Nombre del módulo</b>, su <b>Ruta local</b> y su <b>URL</b>.</li>
+        <li>Presiona <b>Agregar módulo</b>.</li>
+        <li>Luego puedes guardar/editar su ruta en la lista.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Acceso</h2>
+      <p><a href="index.html">← Volver al panel</a></p>
+    </section>
+  </main>
+</body>
+<script>
+function irIdeas(){
+  window.location.href = "/centro-operativo-dorado/ideas/";
+}
+</script>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>APPS | Centro Operativo Dorado</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="scene">
+    <div class="desk-edge"></div>
+    <div class="board board-left"></div>
+    <div class="board board-right"></div>
+    <div class="cabinet cab-left"></div>
+    <div class="cabinet cab-right"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">🐾</span>
+      <span>Centro Operativo Dorado</span>
+    </div>
+    <nav class="topnav">
+      <a class="navbtn" href="/centro-operativo-dorado/">Volver</a>
+      <a class="navbtn" href="manual.html">Manual</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="view">
+      <h1>PAGINA DE APPS</h1>
+      <div class="row">
+        <a class="navbtn link" href="/centro-operativo-dorado/">Volver a la página principal</a>
+      </div>
+      <div class="grid">
+        <div class="card" data-app="sonidos-sagrados">
+          <p class="small">Aquí podrás organizar accesos directos a tus aplicaciones o herramientas.</p>
+        </div>
+        <div class="card">
+          <div class="row">
+            <img src="https://doradoponcedeleon.github.io/generador-de-sonidos-sagrados-v2/apple-touch-icon.png" alt="Sonidos Sagrados" style="width:72px;height:72px;border-radius:16px;border:1px solid rgba(255,255,255,0.12);"/>
+            <div>
+              <h3>Sonidos Sagrados</h3>
+              <p class="small">Disponible · Web app / PWA</p>
+            </div>
+          </div>
+          <p class="small">Generador de sonidos sagrados, mantras y frecuencias armónicas.</p>
+          <div class="row">
+            <button class="navbtn link" type="button" onclick="abrirApp()">Abrir app</button>
+            <button class="navbtn" type="button" onclick="instalarApp()">Instalar app</button>
+          </div>
+          <div class="estado-app" id="estado-sonidos"></div>
+          <p class="small" id="installSonidosHelp">En Android/iPad compatible, usa Instalar app o Añadir a pantalla de inicio.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const appId = "sonidos-sagrados";
+    const appUrl = "https://doradoponcedeleon.github.io/generador-de-sonidos-sagrados-v2/";
+
+    function detectarInstalacion() {
+      const estado = document.getElementById("estado-sonidos");
+
+      if (window.matchMedia("(display-mode: standalone)").matches) {
+        estado.innerHTML = "✅ Abierta como app";
+        estado.style.color = "#00ffcc";
+      } else {
+        estado.innerHTML = "📦 Disponible para instalar";
+        estado.style.color = "#ffaa00";
+      }
+    }
+
+    let deferredPrompt;
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    function instalarApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+          deferredPrompt = null;
+          detectarInstalacion();
+        });
+      } else {
+        alert("Para instalarla:\n1. Abre la app\n2. Menú del navegador\n3. Añadir a pantalla de inicio");
+      }
+    }
+
+    function abrirApp() {
+      window.open(appUrl, "_blank");
+    }
+
+    window.onload = detectarInstalacion;
+  </script>
+</body>
+</html>

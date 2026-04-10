@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APPS - Centro Operativo Dorado</title>
+  <style>
+    :root{
+      --bg:#041225;
+      --panel:#0b2038;
+      --panel2:#0d2744;
+      --line:rgba(255,255,255,.08);
+      --text:#f3f6fb;
+      --muted:#b7c4d3;
+      --gold1:#6b4a1f;
+      --gold2:#3f2a12;
+      --btn:#18385c;
+      --shadow:0 10px 28px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#031022 0%,#03152d 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:14px;
+    }
+    .topbar{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:18px;
+      font-weight:700;
+      background:linear-gradient(180deg, rgba(20,37,60,.95), rgba(10,22,38,.95));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:10px 14px;
+      box-shadow:var(--shadow);
+    }
+    .brand img{
+      width:28px;
+      height:28px;
+      border-radius:8px;
+      object-fit:cover;
+    }
+    .menu{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      color:#fff;
+      background:linear-gradient(180deg,#21456d 0%, #173555 100%);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:10px 14px;
+      box-shadow:var(--shadow);
+      font-size:14px;
+    }
+    .btn-gold{
+      background:linear-gradient(180deg,#7b5728 0%, #4c3317 100%);
+    }
+    .hero{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      background:linear-gradient(180deg, rgba(16,35,58,.98), rgba(11,25,42,.98));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:14px;
+      margin-bottom:14px;
+      box-shadow:var(--shadow);
+    }
+    .hero-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:17px;
+    }
+    .hero-left img{
+      width:30px;
+      height:30px;
+      border-radius:8px;
+      object-fit:cover;
+    }
+    .hero-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    h1{
+      margin:8px 0 16px 0;
+      font-size:24px;
+    }
+    .back-btn{
+      display:inline-flex;
+      margin-bottom:14px;
+      text-decoration:none;
+      color:#fff;
+      background:linear-gradient(180deg,#6f4b20 0%, #472d14 100%);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:10px 14px;
+      box-shadow:var(--shadow);
+      font-weight:700;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(12,33,58,.98), rgba(10,28,49,.98));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      min-height:220px;
+    }
+    .card h2{
+      margin:10px 0 12px 0;
+      font-size:18px;
+    }
+    .muted{
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .app-head{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+    .app-icon{
+      width:52px;
+      height:52px;
+      border-radius:14px;
+      object-fit:cover;
+      flex:0 0 52px;
+    }
+    .app-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:14px 0 8px 0;
+    }
+    .status{
+      color:#f2b34b;
+      font-weight:700;
+      margin:8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="menu">
+        <a class="btn" href="/centro-operativo-dorado/">Inicio</a>
+        <a class="btn" href="/centro-operativo-dorado/">Dashboard</a>
+        <a class="btn" href="/centro-operativo-dorado/">Módulos</a>
+        <a class="btn btn-gold" href="/centro-operativo-dorado/apps/">APPS</a>
+        <a class="btn" href="/centro-operativo-dorado/ideas/">Ideas</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-left">
+        <img src="/centro-operativo-dorado/assets/img/logo-cod.png" alt="Logo" onerror="this.style.display='none'">
+        <span>Centro Operativo Dorado</span>
+      </div>
+      <div class="hero-actions"></div>
+    </div>
+
+    <h1>APPS - Centro Operativo Dorado</h1>
+
+    <div class="grid">
+      <div class="card">
+        <div class="app-head">
+          <img class="app-icon" src="/centro-operativo-dorado/assets/img/sonidos-sagrados.png" alt="Sonidos Sagrados" onerror="this.style.display='none'">
+          <div>
+            <h2 style="margin-top:0;">Sonidos Sagrados</h2>
+            <p class="muted" style="margin-top:0;">Disponible · Web app / PWA</p>
+          </div>
+        </div>
+
+        <p class="muted">Mantras, sonidos sagrados e instrumentos armónicos en una app instalable.</p>
+
+        <div class="app-actions">
+          <a class="btn btn-gold" href="https://doradoponcedeleon.github.io/generador-de-sonidos-sagrados/" target="_blank" rel="noopener noreferrer">Abrir app</a>
+          <button class="btn btn-gold" onclick="instalarApp()">Instalar app</button>
+        </div>
+
+        <div class="status">📦 Disponible para instalar</div>
+        <p class="muted">En Android/iPad compatible, usa Instalar app o Añadir a pantalla de inicio.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let deferredPrompt = null;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    async function instalarApp(){
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+      } else {
+        alert('Si no aparece la instalación automática, usa el menú del navegador y selecciona "Añadir a pantalla de inicio".');
+      }
+    }
+  </script>
+</body>
+</html>

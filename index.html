@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Centro Operativo Dorado</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="scene">
+    <div class="desk-edge"></div>
+    <div class="board board-left"></div>
+    <div class="board board-right"></div>
+    <div class="cabinet cab-left"></div>
+    <div class="cabinet cab-right"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">🐾</span>
+      <span>Centro Operativo Dorado</span>
+    </div>
+    <nav class="topnav">
+      <button class="navbtn" data-view="dashboard">Dashboard</button>
+      <button class="navbtn" data-view="proyectos">Proyectos</button>
+      <button class="navbtn" data-view="bitacora">Bitácora</button>
+      <button class="navbtn" data-view="modulos">Módulos</button>
+      <button class="navbtn" data-view="importexport">Import/Export</button>
+      <a class="navbtn" href="/centro-operativo-dorado/apps/">APPS</a>
+      <a class="navbtn" href="ideas/">Ideas</a>
+      <a class="navbtn" href="manual.html">Manual</a>
+    </nav>
+    <div class="row syncrow">
+      <button id="btn-sync" class="primary">Sincronizar ahora</button>
+      <span id="sync-status" class="small">Sincronización: —</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="view-dashboard" class="view">
+      <h1>Dashboard</h1>
+      <div class="grid">
+        <div class="card">
+          <h3>Resumen</h3>
+          <div class="kpis">
+            <div><span id="kpi-total">0</span><small>Total proyectos</small></div>
+            <div><span id="kpi-activos">0</span><small>Activos</small></div>
+            <div><span id="kpi-pausados">0</span><small>Pausados</small></div>
+            <div><span id="kpi-completos">0</span><small>Completos</small></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Próximos pasos</h3>
+          <ul id="dash-next" class="list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-proyectos" class="view hidden">
+      <div class="row">
+        <h1>Proyectos</h1>
+        <button id="btn-new" class="primary">+ Nuevo</button>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <input id="q" placeholder="Buscar por nombre, etiqueta o estado"/>
+          <select id="f-estado">
+            <option value="">Todos</option>
+            <option value="activo">Activo</option>
+            <option value="pausado">Pausado</option>
+            <option value="completo">Completo</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="list-proyectos" class="list grid"></div>
+    </section>
+
+    <section id="view-bitacora" class="view hidden">
+      <h1>Bitácora</h1>
+      <div class="card">
+        <div class="row">
+          <input id="bit-text" placeholder="Registrar avance, decisión o nota…"/>
+          <button id="bit-add" class="primary">Agregar</button>
+        </div>
+        <div id="bit-list" class="list"></div>
+      </div>
+    </section>
+
+    <section id="view-modulos" class="view hidden">
+      <h1>Módulos</h1>
+      <div class="card" style="margin-bottom:12px">
+        <div class="small">Guarda la ruta local (Termux) para cada módulo:</div>
+        <div class="row" style="margin:8px 0">
+          <input id="new-module-name" placeholder="Nombre del módulo" />
+          <input id="new-module-path" placeholder="/data/data/..." />
+          <input id="new-module-url" placeholder="https://..." />
+          <button id="btn-add-module">Agregar módulo</button>
+          <button id="btn-clear-modules" style="background:#a94442;color:white;">🗑 Borrar módulos</button>
+        </div>
+        <div id="module-paths" class="list"></div>
+      </div>
+      <div class="grid">
+        <a class="card link" href="modulos/mama-salud/index.html">Salud</a>
+        <a class="card link" href="modulos/abc-de-vicky/index.html">Educación</a>
+        <a class="card link" href="modulos/audio-sagrado/index.html">Impresión 3D</a>
+        <a class="card link" href="modulos/kits-fisica/index.html">Investigación</a>
+        <a class="card link" href="modulos/maker-lab/index.html">Maker Lab</a>
+      </div>
+    </section>
+
+    <section id="view-importexport" class="view hidden">
+      <h1>Import/Export</h1>
+      <div class="grid">
+        <div class="card">
+          <h3>Exportar JSON</h3>
+          <button id="btn-export" class="primary">Descargar proyectos+bitácora</button>
+          <button id="btn-export-all">Descargar TODO (incluye ideas)</button>
+        </div>
+        <div class="card">
+          <h3>Importar JSON</h3>
+          <div class="small">Proyectos + bitácora</div>
+          <input id="file-import" type="file" accept="application/json"/>
+          <div class="small" style="margin-top:8px">TODO (incluye ideas)</div>
+          <input id="file-import-all" type="file" accept="application/json"/>
+          <div class="small" style="margin-top:8px">Se reemplaza el contenido actual.</div>
+          <div class="small" style="margin-top:10px">Cargar desde ruta local (solo servidor local)</div>
+          <div class="row">
+            <input id="path-input" placeholder="/data/data/.../archivo.json" />
+            <button id="btn-load-path">Cargar ruta</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="dlg" class="dlg">
+    <form method="dialog" id="form-proyecto">
+      <h2 id="dlg-title">Nuevo proyecto</h2>
+      <input type="hidden" id="p-id"/>
+      <label>Nombre</label>
+      <input id="p-nombre" required/>
+      <label>Estado</label>
+      <select id="p-estado">
+        <option value="activo">Activo</option>
+        <option value="pausado">Pausado</option>
+        <option value="completo">Completo</option>
+      </select>
+      <label>Etiquetas (separadas por coma)</label>
+      <input id="p-tags"/>
+      <label>Próximo paso</label>
+      <input id="p-next"/>
+      <label>Ruta local (Termux)</label>
+      <input id="p-path" placeholder="/data/data/com.termux/files/home/..."/>
+      <label>URL del proyecto</label>
+      <input id="p-url" placeholder="https://..."/>
+      <label>URL local del proyecto</label>
+      <input id="p-url-local" placeholder="http://127.0.0.1:8000/..."/>
+      <label>Notas</label>
+      <textarea id="p-notas" rows="4"></textarea>
+      <div class="row">
+        <button value="cancel">Cancelar</button>
+        <button id="p-save" class="primary" value="default">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+  <script>
+    const btnClearModules = document.getElementById("btn-clear-modules");
+    if (btnClearModules) {
+      btnClearModules.addEventListener("click", () => {
+        if (confirm("¿Seguro que deseas borrar todos los módulos guardados?")) {
+          localStorage.removeItem("modulos");
+          localStorage.removeItem("modulos_config");
+          localStorage.removeItem("modulos_data");
+          alert("Módulos borrados correctamente");
+          location.reload();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

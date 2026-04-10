@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ideas - Centro Operativo Dorado</title>
+  <style>
+    :root{
+      --bg:#07111f;
+      --panel:#0c1b2d;
+      --panel2:#10243b;
+      --text:#f3f6fb;
+      --muted:#a9b7c7;
+      --accent:#d7a74d;
+      --accent2:#2d8f5b;
+      --danger:#a94442;
+      --line:rgba(255,255,255,.08);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(30,70,120,.25), transparent 35%),
+        linear-gradient(180deg, #07111f 0%, #040b14 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:18px;
+    }
+    .topbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      font-size:28px;
+    }
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:400;
+      margin-top:4px;
+    }
+    .menu{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    button, .btn{
+      border:none;
+      cursor:pointer;
+      border-radius:12px;
+      padding:12px 16px;
+      color:#fff;
+      background:linear-gradient(180deg, #1c304d 0%, #13253d 100%);
+      box-shadow:var(--shadow);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:14px;
+    }
+    button:hover, .btn:hover{filter:brightness(1.07)}
+    .btn-green{background:linear-gradient(180deg, #259b63 0%, #1d7a4f 100%)}
+    .btn-gold{background:linear-gradient(180deg, #c79a3f 0%, #9e752a 100%)}
+    .btn-red{background:linear-gradient(180deg, #a84e4b 0%, #7c3634 100%)}
+
+    .hero{
+      background:linear-gradient(180deg, rgba(16,36,59,.98), rgba(11,25,42,.98));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+    }
+    .hero h1{
+      margin:0 0 8px 0;
+      font-size:34px;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(12,27,45,.98), rgba(10,22,37,.98));
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .card h2{
+      margin:0 0 14px 0;
+      font-size:22px;
+    }
+    .muted{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    @media (max-width:700px){
+      .form-row{grid-template-columns:1fr}
+    }
+
+    input, select, textarea{
+      width:100%;
+      background:#091523;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:12px 14px;
+      font-size:14px;
+      outline:none;
+    }
+    textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-bottom:16px;
+    }
+    @media (max-width:700px){
+      .stats{grid-template-columns:1fr}
+    }
+    .stat{
+      background:linear-gradient(180deg, #10243b 0%, #0b1b2d 100%);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+    }
+    .stat .num{
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .idea-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:14px;
+    }
+    .idea-item{
+      background:linear-gradient(180deg, #10243b 0%, #0c1e31 100%);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+    }
+    .idea-head{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:8px;
+    }
+    .idea-title{
+      font-size:18px;
+      font-weight:700;
+    }
+    .badge{
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:12px;
+      background:#1f3553;
+      color:#dbe8f6;
+      margin-right:6px;
+      margin-top:6px;
+    }
+    .idea-body{
+      color:#dde7f0;
+      white-space:pre-wrap;
+      line-height:1.45;
+      margin:10px 0;
+    }
+    .idea-foot{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .mini-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .empty{
+      text-align:center;
+      color:var(--muted);
+      padding:20px;
+      border:1px dashed rgba(255,255,255,.15);
+      border-radius:14px;
+    }
+    .search-box{
+      margin-bottom:12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        💡 Ideas
+        <small>Centro Operativo Dorado</small>
+      </div>
+      <div class="menu">
+        <a class="btn" href="/centro-operativo-dorado/">Inicio</a>
+        <a class="btn" href="/centro-operativo-dorado/">Dashboard</a>
+        <a class="btn" href="/centro-operativo-dorado/">Módulos</a>
+        <a class="btn btn-gold" href="/centro-operativo-dorado/apps/">APPS</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <h1>Módulo Inteligente de Ideas</h1>
+      <p>
+        Aquí puedes registrar, organizar, revisar y desarrollar ideas de proyectos.
+        Queda listo para una segunda etapa con sincronización a Supabase y GitHub.
+      </p>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Nueva idea</h2>
+        <p class="muted">Guarda propuestas, problemas, soluciones, próximos pasos y su estado.</p>
+
+        <div class="form-row">
+          <div>
+            <label>Título</label>
+            <input id="titulo" type="text" placeholder="Ej.: App para seguimiento de presión" />
+          </div>
+          <div>
+            <label>Categoría</label>
+            <select id="categoria">
+              <option value="General">General</option>
+              <option value="Salud">Salud</option>
+              <option value="Educación">Educación</option>
+              <option value="Electrónica">Electrónica</option>
+              <option value="Impresión 3D">Impresión 3D</option>
+              <option value="Software">Software</option>
+              <option value="Investigación">Investigación</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label>Estado</label>
+            <select id="estado">
+              <option value="Nueva">Nueva</option>
+              <option value="En análisis">En análisis</option>
+              <option value="En desarrollo">En desarrollo</option>
+              <option value="Pausada">Pausada</option>
+              <option value="Finalizada">Finalizada</option>
+            </select>
+          </div>
+          <div>
+            <label>Prioridad</label>
+            <select id="prioridad">
+              <option value="Alta">Alta</option>
+              <option value="Media" selected>Media</option>
+              <option value="Baja">Baja</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>Descripción de la idea</label>
+          <textarea id="descripcion" placeholder="Describe la idea, el problema que resuelve, a quién sirve y cómo podría implementarse."></textarea>
+        </div>
+
+        <div>
+          <label>Próximo paso</label>
+          <input id="paso" type="text" placeholder="Ej.: Crear versión v2 sin afectar el sistema actual" />
+        </div>
+
+        <div class="actions">
+          <button class="btn-green" onclick="guardarIdea()">Guardar idea</button>
+          <button onclick="limpiarFormulario()">Limpiar</button>
+          <button class="btn-red" onclick="borrarTodasLasIdeas()">Borrar todo</button>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2>Resumen</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="num" id="statTotal">0</div>
+            <div>Total</div>
+          </div>
+          <div class="stat">
+            <div class="num" id="statActivas">0</div>
+            <div>Activas</div>
+          </div>
+          <div class="stat">
+            <div class="num" id="statAlta">0</div>
+            <div>Prioridad alta</div>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <label>Buscar</label>
+          <input id="buscar" type="text" placeholder="Buscar por título, categoría o descripción..." oninput="renderIdeas()" />
+        </div>
+
+        <p class="muted">
+          Almacenamiento actual: <strong>localStorage</strong><br>
+          Clave usada: <code>cod_ideas</code>
+        </p>
+      </aside>
+    </div>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Ideas guardadas</h2>
+      <div id="listaIdeas" class="idea-list"></div>
+    </section>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "cod_ideas";
+
+    function obtenerIdeas() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function guardarIdeasEnStorage(ideas) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(ideas));
+    }
+
+    function limpiarFormulario() {
+      document.getElementById("titulo").value = "";
+      document.getElementById("categoria").value = "General";
+      document.getElementById("estado").value = "Nueva";
+      document.getElementById("prioridad").value = "Media";
+      document.getElementById("descripcion").value = "";
+      document.getElementById("paso").value = "";
+    }
+
+    function guardarIdea() {
+      const titulo = document.getElementById("titulo").value.trim();
+      const categoria = document.getElementById("categoria").value;
+      const estado = document.getElementById("estado").value;
+      const prioridad = document.getElementById("prioridad").value;
+      const descripcion = document.getElementById("descripcion").value.trim();
+      const paso = document.getElementById("paso").value.trim();
+
+      if (!titulo) {
+        alert("Escribe un título para la idea.");
+        return;
+      }
+
+      const ideas = obtenerIdeas();
+      const nueva = {
+        id: Date.now(),
+        titulo,
+        categoria,
+        estado,
+        prioridad,
+        descripcion,
+        paso,
+        fecha: new Date().toLocaleString("es-BO")
+      };
+
+      ideas.unshift(nueva);
+      guardarIdeasEnStorage(ideas);
+      limpiarFormulario();
+      renderIdeas();
+      actualizarResumen();
+      alert("Idea guardada correctamente.");
+    }
+
+    function eliminarIdea(id) {
+      if (!confirm("¿Seguro que deseas borrar esta idea?")) return;
+      const ideas = obtenerIdeas().filter(i => i.id !== id);
+      guardarIdeasEnStorage(ideas);
+      renderIdeas();
+      actualizarResumen();
+    }
+
+    function cargarIdeaEnFormulario(id) {
+      const ideas = obtenerIdeas();
+      const idea = ideas.find(i => i.id === id);
+      if (!idea) return;
+
+      document.getElementById("titulo").value = idea.titulo;
+      document.getElementById("categoria").value = idea.categoria;
+      document.getElementById("estado").value = idea.estado;
+      document.getElementById("prioridad").value = idea.prioridad;
+      document.getElementById("descripcion").value = idea.descripcion;
+      document.getElementById("paso").value = idea.paso || "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function borrarTodasLasIdeas() {
+      const ideas = obtenerIdeas();
+      if (!ideas.length) {
+        alert("No hay ideas para borrar.");
+        return;
+      }
+      if (!confirm("Se borrarán todas las ideas guardadas. ¿Deseas continuar?")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      renderIdeas();
+      actualizarResumen();
+    }
+
+    function renderIdeas() {
+      const cont = document.getElementById("listaIdeas");
+      const q = document.getElementById("buscar").value.trim().toLowerCase();
+      const ideas = obtenerIdeas().filter(i => {
+        const texto = [i.titulo, i.categoria, i.estado, i.prioridad, i.descripcion, i.paso].join(" ").toLowerCase();
+        return texto.includes(q);
+      });
+
+      if (!ideas.length) {
+        cont.innerHTML = '<div class="empty">No hay ideas guardadas todavía.</div>';
+        return;
+      }
+
+      cont.innerHTML = ideas.map(i => `
+        <article class="idea-item">
+          <div class="idea-head">
+            <div>
+              <div class="idea-title">${escapeHtml(i.titulo)}</div>
+              <div>
+                <span class="badge">${escapeHtml(i.categoria)}</span>
+                <span class="badge">${escapeHtml(i.estado)}</span>
+                <span class="badge">Prioridad: ${escapeHtml(i.prioridad)}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="idea-body">${escapeHtml(i.descripcion || "Sin descripción.")}</div>
+
+          <div class="muted"><strong>Próximo paso:</strong> ${escapeHtml(i.paso || "No definido")}</div>
+
+          <div class="idea-foot">
+            <div>Guardado: ${escapeHtml(i.fecha || "")}</div>
+            <div class="mini-actions">
+              <button onclick="cargarIdeaEnFormulario(${i.id})">Editar</button>
+              <button class="btn-red" onclick="eliminarIdea(${i.id})">Borrar</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function actualizarResumen() {
+      const ideas = obtenerIdeas();
+      const total = ideas.length;
+      const activas = ideas.filter(i => ["Nueva", "En análisis", "En desarrollo"].includes(i.estado)).length;
+      const alta = ideas.filter(i => i.prioridad === "Alta").length;
+
+      document.getElementById("statTotal").textContent = total;
+      document.getElementById("statActivas").textContent = activas;
+      document.getElementById("statAlta").textContent = alta;
+    }
+
+    function escapeHtml(text) {
+      return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    renderIdeas();
+    actualizarResumen();
+  </script>
+</body>
+</html>

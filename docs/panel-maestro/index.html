@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centro Operativo Dorado · Panel Maestro</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Centro Operativo Dorado</h1>
+      <p class="subtitle">Dashboard, Proyectos, Módulos y Bitácora</p>
+    </div>
+    <nav class="tabs">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#modulos">Módulos</a>
+      <a href="#bitacora">Bitácora</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section id="dashboard" class="panel">
+      <div class="panel-header">
+        <h2>Dashboard</h2>
+        <p class="muted">Resumen general del Centro Operativo Dorado.</p>
+      </div>
+      <div id="dashboardGrid" class="grid kpi-grid"></div>
+    </section>
+
+    <section id="proyectos" class="panel">
+      <div class="panel-header">
+        <h2>Proyectos</h2>
+        <p class="muted">Acceso directo a proyectos activos y en evolución.</p>
+      </div>
+      <div id="proyectosGrid" class="grid cards"></div>
+    </section>
+
+    <section id="modulos" class="panel">
+      <div class="panel-header">
+        <h2>Módulos</h2>
+        <p class="muted">Componentes funcionales del ecosistema Dorado.</p>
+      </div>
+      <div id="modulosGrid" class="grid cards"></div>
+    </section>
+
+    <section id="bitacora" class="panel">
+      <div class="panel-header">
+        <h2>Bitácora</h2>
+        <p class="muted">Registro de actividades recientes.</p>
+      </div>
+      <div class="bitacora-form">
+        <input id="bitacoraTitulo" type="text" placeholder="Título de la entrada" />
+        <textarea id="bitacoraDescripcion" placeholder="Descripción corta"></textarea>
+        <button id="btnAgregarBitacora" class="btn">Agregar entrada</button>
+      </div>
+      <div id="bitacoraLista" class="bitacora"></div>
+    </section>
+  </main>
+
+  <script src="assets/js/proyectos.js"></script>
+  <script src="assets/js/modulos.js"></script>
+  <script src="assets/js/bitacora.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
